@@ -4,6 +4,14 @@ const client = new MongoClient(url, {useUnifiedTopology: true});
 
 module.exports = {
 
+    // get all items
+    getAllItems: function() {
+        return client.connect().then((client)=>{
+            let db = client.db('data')
+            return db.collection('order').find().toArray();
+        });
+    },
+
     //Aufgabe 1: show all orders from a particular company
     getAllOrders:  function(companyName) {
         return client.connect().then((client)=>{

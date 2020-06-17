@@ -1,23 +1,56 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Iliass Hilmi Tasks</title>
-</head>
-
+<% include header %>
 <body>
-<h1>Aufgaben Assigned to Iliass Hilmi</h1>
-<form method="post" action="/getorders">
-    <h2>Aufgabe 1 </h2>
-    <input type="text" name="companyName"  placeholder="Enter company name here" required>
-    <input type="submit" value="Show all orderIdems">
-</form>
+<div class="text-center">
+    <h1>All orders</h1>
 
-<h2>Aufgabe 2 </h2>
-<form method="post" action="/getordersofaddress">
-    <input type="text" name="customerAddress"  placeholder="Enter company address here" required>
-    <input type="submit" value="Show all orderIdems">
-</form>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr class="">
+            <th scope="col">orderId</th>
+            <th scope="col">companyName</th>
+            <th scope="col">customerAdress</th>
+            <th scope="col">orderIdem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% items.forEach(function(item) { %>
+        <tr class="">
+            <td><%= item.orderId %></td>
+            <td><%= item.companyName %></td>
+            <td><%= item.customerAdress %></td>
+            <td><%= item.orderIdem %></td>
+        </tr>
+        </tbody>
+        <% }); %>
+    </table>
+
+    <h1> Operations </h1>
 
 
+                <form method="post" action="/getorders">
+                    <h3>Task 1 </h3>
+                    <input type="text" name="companyName"  placeholder="Enter company name here" required>
+                    <input class= "btn-info" type="submit" value="Show orders">
+                </form>
+
+                <h3>Task 2 </h3>
+                <form method="post" action="/getordersofaddress">
+                    <input type="text" name="customerAddress"  placeholder="Enter company address here" required>
+                    <input class= "btn-info" type="submit" value="Show orders">
+                </form>
+
+                <h3>Task 3 </h3>
+                <form method="post" action="/deleteitem">
+                    <input type="text" name="delItem"  placeholder="Enter orderId here" required>
+                    <input class= "btn-danger" type="submit" value="Delete Item">
+                </form>
+
+                <h3>Task 4 </h3>
+                <form method="post" action="/deleteitem">
+                    <input type="text" name="delItem"  placeholder="Enter company address here" required>
+                    <input class= "btn-danger" type="submit" value="Delete Item">
+                </form>
+</div>
 </body>
+<% include footer %>
 </html>
