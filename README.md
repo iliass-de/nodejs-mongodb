@@ -5,9 +5,9 @@
 * Node.js v10+
 * MongoDB running on local instance
 
-##### Environment Variables
+## Environment Variables
 * PORT: 3000
-#### Installation
+## Installation
 * Clone the app  
 `git clone https://github.com/iliassh1/nodejs-mongodb`
 * Install dependencies  
