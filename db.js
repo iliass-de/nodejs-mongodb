@@ -27,6 +27,17 @@ module.exports = {
             return db.collection('order').find({customerAdress:address}).toArray();
         });
     },
+    //Task 3: remove item
+    removeItem: function(item) {
+            client.connect().then((client)=>{
+            let db = client.db('data')
+            db.collection('order').deleteOne({orderId: item},  function(err, obj) {
+                if (err) throw err;
+                console.log("1 document deleted");
+            });
+        });
+    },
+
 };
 
 

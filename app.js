@@ -15,7 +15,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 
-
 app.get('/', async function(req, res) {
     const companyname = req.body.companyName;
     const allItems = await db.getAllItems();
@@ -35,13 +34,17 @@ app.post('/getorders', async function(req, res) {
 
 app.post('/getordersofaddress', async function(req, res) {
     const customerAdress =  req.body.customerAddress;
-    console.log(customerAdress);
     const orderItem = await db.getAllOrderOfAddress(customerAdress);
-    console.log(orderItem);
     res.render('orders', {
         orderItem: orderItem,
         adress: customerAdress
     });
+});
+
+app.post('/deleteitem', function(req, res) {
+    const delItem =  req.body.delItem;
+    db.removeItem(parseInt(delItem));
+    res.redirect('/');
 });
 
 
