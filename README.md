@@ -1,3 +1,3 @@
-`mongoimport -d mydb -c things --type csv --file locations.csv --headerline`
+`mongoimport -d data -c order --type csv --file db/data.csv --headerline`
 
 db.things.find()

@@ -23,9 +23,7 @@ app.get('/', async function(req, res) {
 
 app.post('/getorders', async function(req, res) {
     const companyName =  req.body.companyName;
-    console.log(companyName);
     const orderItem = await db.getAllOrders(companyName);
-    console.log(orderItem);
     res.render('orders', {
         orderItem: orderItem,
         company: companyName
@@ -47,6 +45,13 @@ app.post('/deleteitem', function(req, res) {
     res.redirect('/');
 });
 
+
+app.post('/countItem', async function(req, res) {
+    let result = await db.displayItems();
+    res.render('duplicatedOrders', {
+        result: result,
+    });
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://${hostname}:${port}/`);

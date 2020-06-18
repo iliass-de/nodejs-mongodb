@@ -1,0 +1,17 @@
+<% include header %>
+<body>
+<div class="text-center">
+    <h1>List of orders</h1>
+    <h3></h3>
+
+
+    <ul>
+        <% result.forEach(function(item) { %>
+            <li><%= item._id.orderIdem %>: <%= item.count %> </li>
+        <% }); %>
+    </ul>
+</div>
+</body>
+<% include footer %>
+
+</html>

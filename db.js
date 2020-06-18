@@ -27,6 +27,7 @@ module.exports = {
             return db.collection('order').find({customerAdress:address}).toArray();
         });
     },
+
     //Task 3: remove item
     removeItem: function(item) {
             client.connect().then((client)=>{
@@ -38,6 +39,26 @@ module.exports = {
         });
     },
 
+    //Task 4: group items
+    displayItems: function() {
+        return client.connect().then((client)=>{
+            let db = client.db('data')
+            return db.collection('order').aggregate(
+                [
+                    {
+                        "$group": {
+                            "_id": { "orderIdem": "$orderIdem" },
+                            "count": { "$sum": 1 }
+                        }
+                    },
+                    {
+                        "$sort":{'count': -1}
+                    },
+                    { "$match": { "count": { "$gt": 0 } } },
+                ]
+            ).toArray();
+        });
+    },
 };
 
 
