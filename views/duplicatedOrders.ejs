@@ -2,16 +2,26 @@
 <body>
 <div class="text-center">
     <h1>List of orders</h1>
-    <h3></h3>
 
-
-    <ul>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr class="">
+            <th scope="col">Order name</th>
+            <th scope="col">Number of orders</th>
+        </tr>
+        </thead>
+        <tbody>
         <% result.forEach(function(item) { %>
-            <li><%= item._id.orderIdem %>: <%= item.count %> </li>
+            <tr class="">
+                <td><%= item._id.orderIdem %></td>
+                <td><%= item.count %></td>
+            </tr>
+        </tbody>
         <% }); %>
-    </ul>
+    </table>
+    <a href="/">
+        <input class = "btn-info" type="button" value="Back" />
+    </a>
 </div>
 </body>
 <% include footer %>
-
-</html>

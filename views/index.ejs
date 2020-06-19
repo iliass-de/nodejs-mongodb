@@ -1,55 +1,58 @@
 <% include header %>
 <body>
-<div class="text-center">
-    <h1>All orders</h1>
+    <div class="text-center">
+        <h1>All orders</h1>
 
-    <table class="table table-striped">
-        <thead class="thead-dark">
-        <tr class="">
-            <th scope="col">orderId</th>
-            <th scope="col">companyName</th>
-            <th scope="col">customerAdress</th>
-            <th scope="col">orderIdem</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% items.forEach(function(item) { %>
-        <tr class="">
-            <td><%= item.orderId %></td>
-            <td><%= item.companyName %></td>
-            <td><%= item.customerAdress %></td>
-            <td><%= item.orderIdem %></td>
-        </tr>
-        </tbody>
-        <% }); %>
-    </table>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr class="">
+                <th scope="col">orderId</th>
+                <th scope="col">companyName</th>
+                <th scope="col">customerAdress</th>
+                <th scope="col">orderIdem</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% items.forEach(function(item) { %>
+            <tr class="">
+                <td><%= item.orderId %></td>
+                <td><%= item.companyName %></td>
+                <td><%= item.customerAdress %></td>
+                <td><%= item.orderIdem %></td>
+            </tr>
+            </tbody>
+            <% }); %>
+        </table>
 
-    <h1> Operations </h1>
+       <div class="operations">
+           <h1> Operations </h1>
+           <form method="post" action="/getorders">
+               <h3>Task 1: </h3>
+               <p>Show all orders from a particular company</p>
+               <input type="text" name="companyName"  placeholder="Enter company name here" required>
+               <input class= "btn-info" type="submit" value="Show orders">
+           </form>
 
+           <form method="post" action="/getordersofaddress">
+               <h3>Task 2 </h3>
+               <p>Show all orders to a particular address</p>
+               <input type="text" name="customerAddress"  placeholder="Enter company address here" required>
+               <input class= "btn-info" type="submit" value="Show orders">
+           </form>
 
-                <form method="post" action="/getorders">
-                    <h3>Task 1 </h3>
-                    <input type="text" name="companyName"  placeholder="Enter company name here" required>
-                    <input class= "btn-info" type="submit" value="Show orders">
-                </form>
+           <form method="post" action="/deleteitem">
+               <h3>Task 3 </h3>
+               <p>Delete a particular order given an OrderId</p>
+               <input type="text" name="delItem"  placeholder="Enter an orderId here" required>
+               <input class= "btn-danger" type="submit" value="Delete Item">
+           </form>
 
-                <h3>Task 2 </h3>
-                <form method="post" action="/getordersofaddress">
-                    <input type="text" name="customerAddress"  placeholder="Enter company address here" required>
-                    <input class= "btn-info" type="submit" value="Show orders">
-                </form>
-
-                <h3>Task 3 </h3>
-                <form method="post" action="/deleteitem">
-                    <input type="text" name="delItem"  placeholder="Enter orderId here" required>
-                    <input class= "btn-danger" type="submit" value="Delete Item">
-                </form>
-
-                <h3>Task 4 </h3>
-                <form method="post" action="/countItem">
-                    <input class= "btn-info" type="submit" value="Display duplicated orders">
-                </form>
-</div>
+           <form method="post" action="/countItem">
+               <h3>Task 4 </h3>
+               <p>Display how often each item has been ordered in descending order</p>
+               <input class= "btn-info" type="submit" value="Display duplicated orders">
+           </form>
+       </div>
+    </div>
 </body>
 <% include footer %>
-</html>

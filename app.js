@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', async function(req, res) {
     const companyname = req.body.companyName;
