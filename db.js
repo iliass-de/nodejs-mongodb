@@ -12,7 +12,7 @@ module.exports = {
         });
     },
 
-    //Aufgabe 1: show all orders from a particular company
+    //Task 1: show all orders from a particular company
     getAllOrders:  function(companyName) {
         return client.connect().then((client)=>{
             let db = client.db('data')
@@ -20,7 +20,7 @@ module.exports = {
         });
     },
 
-    //Aufgabe 2:  Show all orders to a particular address
+    //Task 2:  Show all orders to a particular address
     getAllOrderOfAddress: function(address) {
         return client.connect().then((client)=>{
             let db = client.db('data')

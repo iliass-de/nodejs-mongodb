@@ -10,10 +10,12 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+// to support URL-encoded bodies
+app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+// integrate public folder
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', async function(req, res) {
@@ -45,7 +47,6 @@ app.post('/deleteitem', function(req, res) {
     db.removeItem(parseInt(delItem));
     res.redirect('/');
 });
-
 
 app.post('/countItem', async function(req, res) {
     let result = await db.displayItems();
